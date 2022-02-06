@@ -1,0 +1,8 @@
+{
+    "lifx-url": "https://api.lifx.com/v1/lights/",
+    "api-key": "c3333fbccff7b74008b71c8ea5795ff31e40baf3870f924503739ea7b92941cb",
+    "light": {
+        "id": "d073d56649d6",
+        "label": "Gurnoor's Bedroom Light"
+    }
+}
