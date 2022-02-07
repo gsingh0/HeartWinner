@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from './src/ui/screens/home/Home';
+import TabNavigators from './src/ui/components/navigators/TabNavigators';
 import Login from './src/ui/screens/login/Login';
 import Loading from './src/ui/screens/loading/Loading';
 import * as firebase from 'firebase/app';
@@ -21,10 +21,8 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name={'Loading'} component={Loading} options={{ headerShown: false }}/>
-          <Stack.Screen name='Home' component={Home} options={{ headerShown: false }}/>
           <Stack.Screen name='Login' component={Login} options={{ headerShown: false }}/>
-          {/* <Stack.Screen name='Sign In' component={SignIn} options={{ headerShown: false }}/>
-          <Stack.Screen name={'Dashboard'} component={Dashboard} options={{ headerShown: false }} /> */}
+          <Stack.Screen name='TabNavigators' component={TabNavigators} options={{ headerShown: false }}/>
         </Stack.Navigator>
       </NavigationContainer>
   );

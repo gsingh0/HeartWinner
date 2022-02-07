@@ -11,7 +11,7 @@ export default function Login({ navigation }) {
   const login = async (email, password) => {
     try {
         await firebase.signInWithEmailAndPassword(firebase.getAuth(), email, password);
-        navigation.replace('Home');
+        navigation.replace('TabNavigators');
       } catch (err) {
         Alert.alert('There is something wrong!', err.message);
       }

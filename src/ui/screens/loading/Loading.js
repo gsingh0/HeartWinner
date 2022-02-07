@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import * as firebase from 'firebase/auth';
 import styles from './loading.styles';
 
@@ -8,7 +8,7 @@ export default function LoadingScreen({ navigation }) {
      () => {
       firebase.getAuth().onAuthStateChanged((user) => {
         if (user) {
-          navigation.replace('Home');
+          navigation.replace('TabNavigators');
         } else {
           navigation.replace('Login');
         }
