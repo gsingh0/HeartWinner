@@ -2,10 +2,20 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './login.styles';
+import * as firebase from 'firebase/auth';
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const login = async (email, password) => {
+    try {
+        await firebase.signInWithEmailAndPassword(firebase.getAuth(), email, password);
+        navigation.replace('Home');
+      } catch (err) {
+        Alert.alert('There is something wrong!', err.message);
+      }
+  }
 
   const handlePress = () => {
     if (!email) {
@@ -16,7 +26,7 @@ export default function Login() {
       Alert.alert('Password field is required.');
     }
 
-    // signIn(email, password);
+    login(email, password);
     setEmail('');
     setPassword('');
   };
