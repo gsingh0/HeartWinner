@@ -34,25 +34,33 @@ export default function ToggleLightButton({ icon, iconFont, onBackgroundColorCha
             }).then((response) => {
                 resolve(response.data);
             }).catch((error) => {
+                Alert.alert(error);
                 reject(error);
             });
         });
     }
     
     const setLightState = (state) => {
-        axios({
-            method: 'put',
-            url: appConfig["lifx-url"] + appConfig.light.id + "/state",
-            headers: {
-                Authorization: "Bearer " + appConfig["api-key"]
-            },
-            data: {
-                power: state
-            }
-        }).then((response) => {
-            console.log("power turned " + state);
-            setLightStateText("LIGHT: " + state.toUpperCase());
-         });
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'put',
+                url: appConfig["lifx-url"] + appConfig.light.id + "/state",
+                headers: {
+                    Authorization: "Bearer " + appConfig["api-key"]
+                },
+                data: {
+                    power: state
+                }
+            }).then((response) => {
+                console.log("power turned " + state);
+                setLightStateText("LIGHT: " + state.toUpperCase());
+                resolve(response);
+             }).catch((error) => {
+                 Alert.alert(error);
+                 console.log(error);
+                 reject(error);
+             });
+        });
     }
 
     useEffect(async () => {
@@ -77,21 +85,30 @@ export default function ToggleLightButton({ icon, iconFont, onBackgroundColorCha
         icon={{
           name: icon,
           type: iconFont,
-          size: 15,
+          size: 20,
           color: 'white',
         }}
-        iconContainerStyle={{ marginRight: 10 }}
-        titleStyle={{ fontWeight: '700' }}
+        iconContainerStyle={{ 
+            marginRight: 10,
+        }}
+        titleStyle={{ 
+            fontWeight: '700',
+            justifyContent: 'center',
+            width: 75,
+            fontSize: 15
+            // flexWrap: 'wrap'
+        }}
         buttonStyle={{
           backgroundColor: 'rgba(90, 154, 230, 1)',
           borderColor: 'transparent',
           borderWidth: 0,
-          borderRadius: 30,
+          borderRadius: 10,
         }}
         containerStyle={{
-          width: 200,
-          marginHorizontal: 50,
-          marginVertical: 10,
+          width: 150,
+          marginHorizontal: 20,
+          marginVertical: 20,
+
         }}
       />
     )

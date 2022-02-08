@@ -23,11 +23,12 @@ some edge cases to consider
         - *scare gurnoor (toggle off and on repeatedly)
         - *dim the light (so gurnoor can't see)
         - *change the color to yellow (gurnoor hates that color)
+        - choose custom color
+        - slider to change brightness
     - mood
         - pink - jeetu wants attention
         - green - jeetu wants to talk
         - orange - jeetu wants to vent
-        - *multi-color - jeetu wants to annoy gurnoor
 
 
 color transition -> click button color should be target color

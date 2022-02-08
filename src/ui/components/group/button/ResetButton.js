@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 
-export default function MoodButton({ title, buttonColor, color, icon, iconFont, onBackgroundColorChange }) {
+export default function ResetButton({ title, buttonColor, color, icon, iconFont, onBackgroundColorChange }) {
 
     const setLightColor = () => {
         return new Promise((resolve, reject) => {
@@ -48,9 +48,9 @@ export default function MoodButton({ title, buttonColor, color, icon, iconFont, 
           borderRadius: 30,
         }}
         containerStyle={{
-          width: 200,
-          marginHorizontal: 50,
-          marginVertical: 10,
+          width: 120,
+          marginHorizontal: 20,
+          marginVertical: 20,
         }}
       />
 
