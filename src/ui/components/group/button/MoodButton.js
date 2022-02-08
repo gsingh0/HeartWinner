@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 
-export default function MoodButton({ title, buttonColor, color, icon, iconFont, onBackgroundColorChange }) {
+export default function MoodButton({ title, buttonColor, target, colorValue, icon, iconFont, onBackgroundColorChange }) {
 
     const setLightColor = () => {
         return new Promise((resolve, reject) => {
@@ -16,22 +16,32 @@ export default function MoodButton({ title, buttonColor, color, icon, iconFont, 
                     Authorization: "Bearer " + appConfig["api-key"]
                 },
                 data: {
-                    color: color,
+                    color: target,
                     brightness: 1.0
                 }
-            }).then((response) => {
-                onBackgroundColorChange(color);
+            })
+            .then((response) => {
+                onBackgroundColorChange(colorValue, 3000);
                 resolve(response.data);
             }).catch((error) => {
-                Alert.alert(error);
+                console.log(error);
                 reject(error);
             });
         });
-    }    
+    }   
+    
+    const run = async () => {
+        try {
+            await setLightColor();
+        } catch (error) {
+            Alert.alert("Oops! Something went wrong.");
+            console.log(error);
+        }
+    }
 
     return (
         <Button
-        onPress={() => setLightColor()}
+        onPress={() => run()}
         title={title}
         icon={{
           name: icon,

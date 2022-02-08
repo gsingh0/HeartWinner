@@ -24,7 +24,6 @@ some edge cases to consider
         - *dim the light (so gurnoor can't see)
         - *change the color to yellow (gurnoor hates that color)
         - choose custom color
-        - slider to change brightness
     - mood
         - pink - jeetu wants attention
         - green - jeetu wants to talk
@@ -36,6 +35,9 @@ color transition -> click button color should be target color
     onBackGroundColorChange method
 
 - explore effects
+
+
+- missing you button
     
 
 

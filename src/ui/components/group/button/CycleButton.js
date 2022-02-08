@@ -4,6 +4,8 @@ import sleep from "../../../../api/Thread.js";
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+import { colorValues, colorsRGB, colorsName } from '../../../../enums/colors';
+import getRandomInt from '../../../../api/Random';
 
 export default function CycleButton({ icon, iconFont, onBackgroundColorChange }) {
 
@@ -18,44 +20,27 @@ export default function CycleButton({ icon, iconFont, onBackgroundColorChange })
                 data: {
                     states: [
                         {
-                            color: "red"
+                            color: colorsName.RED
                         },
                         {
-                            color: "blue"
+                            color: colorsName.BLUE
                         },
                         {
-                            color: "pink"
+                            color: colorsName.PINK
                         },
                         {
-                            color: "orange"
+                            color: colorsName.ORANGE
                         },
                         {
-                            color: "green"
+                            color: colorsName.GREEN
                         },
                         {
-                            color: "yellow"
+                            color: colorsName.YELLOW
                         },
                     ],
                     defaults: {
                         duration: 2.0
                     }
-                }
-            }).then((response) => {
-                resolve(response.data);
-            }).catch((error) => {
-                Alert.alert(error);
-                reject(error);
-            });
-        });
-    }
-
-    const getLightState = () => {
-        return new Promise((resolve, reject) => {
-            axios({
-                method: 'get',
-                url: appConfig["lifx-url"] + appConfig.light.id,
-                headers: {
-                    Authorization: "Bearer " + appConfig["api-key"]
                 }
             }).then((response) => {
                 resolve(response.data);
@@ -91,16 +76,16 @@ export default function CycleButton({ icon, iconFont, onBackgroundColorChange })
         let count = 0;
         while (count < 15) {
             await cycle();
-            let light = await getLightState();
-            let color = light[0].color;
-            onBackgroundColorChange(color);
+            // not possible to sync light color with background color because
+            // api sends back hsl rep. when need rgb rep. So use randNum(0, 8)
+            let randValue = getRandomInt(9);
+            console.log(randValue);
+            onBackgroundColorChange(randValue, 100);
             count++;
-            console.log("count: " + count + "; color: " + color);
-            console.log(light);
             sleep(1000);
         }
-        await setLightState("white");
-        onBackgroundColorChange("white");
+        await setLightState(colorsName.WHITE);
+        onBackgroundColorChange(colorValues.WHITE, 3000);
     }
 
     return (

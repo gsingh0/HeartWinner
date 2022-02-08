@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   contentView: {
-    flex: 1
+    flex: 1  
   },
 
   buttonView: {
@@ -24,7 +24,7 @@ export default StyleSheet.create({
     marginVertical: 20,
   },
   subHeader: {
-    backgroundColor : "#2089dc",
+    backgroundColor : "white",
     color : "white",
     textAlign : "center",
     paddingVertical : 5,

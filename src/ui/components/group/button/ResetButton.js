@@ -4,8 +4,26 @@ import sleep from "../../../../api/Thread.js";
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+import { colorValues, colorsRGB, colorsName } from '../../../../enums/colors';
 
-export default function ResetButton({ title, buttonColor, color, icon, iconFont, onBackgroundColorChange }) {
+export default function ResetButton({ title, buttonColor, color, colorValue, icon, iconFont, onBackgroundColorChange }) {
+
+    const effectsOff = () => {
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'post',
+                url: appConfig["lifx-url"] + appConfig.light.id + "/effects/off",
+                headers: {
+                    Authorization: "Bearer " + appConfig["api-key"]
+                }
+            }).then((response) => {
+                resolve(response.data);
+            }).catch((error) => {
+                Alert.alert(error);
+                reject(error);
+            });
+        });
+    }
 
     const setLightColor = () => {
         return new Promise((resolve, reject) => {
@@ -20,18 +38,27 @@ export default function ResetButton({ title, buttonColor, color, icon, iconFont,
                     brightness: 1.0
                 }
             }).then((response) => {
-                onBackgroundColorChange(color);
+                onBackgroundColorChange(colorValue, 1000);
                 resolve(response.data);
             }).catch((error) => {
                 Alert.alert(error);
                 reject(error);
             });
         });
-    }    
+    } 
+
+    const reset = async () => {
+        try {
+            await setLightColor();
+            await effectsOff();
+        } catch (error) {
+            Alert.alert(error);
+        }
+    }
 
     return (
         <Button
-        onPress={() => setLightColor()}
+        onPress={() => reset()}
         title={title}
         icon={{
           name: icon,

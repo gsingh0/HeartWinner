@@ -4,8 +4,11 @@ export default StyleSheet.create({
     home: {
         position: 'relative',
         flex: 1,
-        backgroundColor: 'yellow',
       },
+
+    backdrop: {
+        backgroundColor: 'yellow',
+    },
     
     mainButtons: {
         position: 'absolute',

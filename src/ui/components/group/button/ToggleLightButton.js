@@ -4,21 +4,26 @@ import sleep from "../../../../api/Thread.js";
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+import { colorValues, colorsRGB, colorsName } from '../../../../enums/colors';
 
 export default function ToggleLightButton({ icon, iconFont, onBackgroundColorChange }) {
     const [lightStateText, setLightStateText] = useState("LOADING...");
+    const [loading, setLoading] = useState(true);
 
     const togglePower = async () => {
+        setLoading(true);
         let data = await getLightState();
         if (data.length > 0) {
             let light = data[0];
             await sleep(3000);
             if (light.power === "on") {
                 await setLightState("off");
-                onBackgroundColorChange("white");
+                setLoading(false);
+                onBackgroundColorChange(colorValues.BLACK, 0);
             } else {
                 await setLightState("on");
-                onBackgroundColorChange("yellow");
+                setLoading(false);
+                onBackgroundColorChange(colorValues.WHITE, 0);
             }
         }
     }
@@ -65,13 +70,15 @@ export default function ToggleLightButton({ icon, iconFont, onBackgroundColorCha
 
     useEffect(async () => {
         try {
+            setLoading(true);
             let lightState = await getLightState();
             console.log(lightState[0].power);
             setLightStateText("LIGHT: " + lightState[0].power.toUpperCase());
+            setLoading(false);
             if (lightState[0].power === 'on') {
-                onBackgroundColorChange("yellow");
+                onBackgroundColorChange(colorValues.WHITE, 0);
             } else {
-                onBackgroundColorChange("white");
+                onBackgroundColorChange(colorValues.BLACK, 0);
             }
         } catch (error) {
             Alert.alert("error: " + error);
@@ -80,6 +87,7 @@ export default function ToggleLightButton({ icon, iconFont, onBackgroundColorCha
 
     return (
         <Button
+        loading={loading}
         onPress={() => togglePower()}
         title={lightStateText}
         icon={{
@@ -103,6 +111,7 @@ export default function ToggleLightButton({ icon, iconFont, onBackgroundColorCha
           borderColor: 'transparent',
           borderWidth: 0,
           borderRadius: 10,
+          minHeight: 53
         }}
         containerStyle={{
           width: 150,

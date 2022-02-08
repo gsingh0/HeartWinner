@@ -5,8 +5,9 @@ import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { gray } from 'kleur';
+import { colorValues, colorsRGB } from '../../../../enums/colors';
 
-export default function ToggleRepititionButton({ target_color, start_color, icon, iconFont, onBackgroundColorChange }) {
+export default function ToggleRepititionButton({ toColor, toColorValue, fromColor, fromColorValue, icon, iconFont, onBackgroundColorChange }) {
 
     const pulseEffect = () => {
         return new Promise((resolve, reject) => {
@@ -17,8 +18,8 @@ export default function ToggleRepititionButton({ target_color, start_color, icon
                     Authorization: "Bearer " + appConfig["api-key"]
                 },
                 data: {
-                    color: target_color,
-                    from_color: start_color,
+                    color: toColor,
+                    from_color: fromColor,
                     period: 1.0,
                     cycles: 15
                 }
@@ -50,21 +51,21 @@ export default function ToggleRepititionButton({ target_color, start_color, icon
     }
 
     const runPulse = async () => {
-        let currColor = start_color;
+        let currColor = fromColor;
         let count = 0;
         await pulseEffect();
         while (count < 15) {
-            if (currColor === start_color) {
-                onBackgroundColorChange(target_color) 
-                currColor = target_color;
+            if (currColor === fromColor) {
+                onBackgroundColorChange(toColorValue, 100) 
+                currColor = toColor;
             } else {
-                onBackgroundColorChange(start_color) 
-                currColor = start_color;
+                onBackgroundColorChange(fromColorValue, 100) 
+                currColor = fromColor;
             }
             count++;
             await sleep(1000);
         }
-        onBackgroundColorChange("white"); 
+        onBackgroundColorChange(colorValues.WHITE); 
     }
 
     return (
