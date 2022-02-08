@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { gray } from 'kleur';
-import { colorValues, colorsRGB } from '../../../../enums/colors';
+import { colorValues, colorsRGB, colorsName } from '../../../../enums/colors';
 
 export default function ToggleRepititionButton({ toColor, toColorValue, fromColor, fromColorValue, icon, iconFont, onBackgroundColorChange }) {
 
@@ -32,23 +32,25 @@ export default function ToggleRepititionButton({ toColor, toColorValue, fromColo
         });
     }
 
-    const effectsOff = () => {
+    const setLightColor = async (targetColor) => {
         return new Promise((resolve, reject) => {
             axios({
-                method: 'post',
-                url: appConfig["lifx-url"] + appConfig.light.id + "/effects/off",
+                method: 'put',
+                url: appConfig["lifx-url"] + appConfig.light.id + "/state",
                 headers: {
                     Authorization: "Bearer " + appConfig["api-key"]
+                },
+                data: {
+                    color: targetColor,
+                    brightness: 1.0
                 }
             }).then((response) => {
-                console.log(response.data);
                 resolve(response.data);
             }).catch((error) => {
-                Alert.alert(error);
                 reject(error);
             });
         });
-    }
+    } 
 
     const runPulse = async () => {
         let currColor = fromColor;
@@ -65,7 +67,8 @@ export default function ToggleRepititionButton({ toColor, toColorValue, fromColo
             count++;
             await sleep(1000);
         }
-        onBackgroundColorChange(colorValues.WHITE); 
+        await setLightColor(colorsName.WHITE);
+        onBackgroundColorChange(colorValues.WHITE, 1000); 
     }
 
     return (

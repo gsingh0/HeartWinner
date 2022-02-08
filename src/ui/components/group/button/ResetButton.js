@@ -7,6 +7,7 @@ import { Alert } from 'react-native';
 import { colorValues, colorsRGB, colorsName } from '../../../../enums/colors';
 
 export default function ResetButton({ title, buttonColor, color, colorValue, icon, iconFont, onBackgroundColorChange }) {
+    const [loading, setLoading] = useState(false);
 
     const effectsOff = () => {
         return new Promise((resolve, reject) => {
@@ -25,7 +26,7 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
         });
     }
 
-    const setLightColor = () => {
+    const setLightColor = async () => {
         return new Promise((resolve, reject) => {
             axios({
                 method: 'put',
@@ -38,10 +39,8 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
                     brightness: 1.0
                 }
             }).then((response) => {
-                onBackgroundColorChange(colorValue, 1000);
                 resolve(response.data);
             }).catch((error) => {
-                Alert.alert(error);
                 reject(error);
             });
         });
@@ -49,15 +48,21 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
 
     const reset = async () => {
         try {
+            setLoading(true)
             await setLightColor();
             await effectsOff();
+            onBackgroundColorChange(colorValue, 1000);
+            setLoading(false);
         } catch (error) {
-            Alert.alert(error);
+            console.log(error);
+            Alert.alert("Oops! Something went wrong.");
+            setLoading(false);
         }
     }
 
     return (
         <Button
+        loading={loading}
         onPress={() => reset()}
         title={title}
         icon={{
@@ -80,6 +85,7 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
           borderColor: 'transparent',
           borderWidth: 0,
           borderRadius: 10,
+          minHeight: 53
         }}
         containerStyle={{
           width: 150,
