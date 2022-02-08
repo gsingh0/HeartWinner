@@ -36,21 +36,32 @@ export default function MoodButton({ title, buttonColor, color, icon, iconFont, 
         icon={{
           name: icon,
           type: iconFont,
-          size: 15,
+          size: 20,
           color: 'white',
         }}
-        iconContainerStyle={{ marginRight: 10 }}
-        titleStyle={{ fontWeight: '700' }}
+        iconContainerStyle={{ 
+            marginRight: 10 
+        }}
+        titleStyle={{ 
+            fontWeight: '700',
+            justifyContent: 'center',
+
+        }}
         buttonStyle={{
           backgroundColor: buttonColor,
           borderColor: 'transparent',
           borderWidth: 0,
-          borderRadius: 30,
+          borderRadius: 10,
+          margin: 10,
+          padding: 25
         }}
         containerStyle={{
-          width: 200,
-          marginHorizontal: 50,
-          marginVertical: 10,
+            // backgroundColor: "gray",
+            width: 170,
+            height: 100,
+            justifyContent: 'center',
+            marginHorizontal: 10,
+            marginVertical: 20,
         }}
       />
 

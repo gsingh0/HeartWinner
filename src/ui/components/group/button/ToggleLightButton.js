@@ -106,7 +106,7 @@ export default function ToggleLightButton({ icon, iconFont, onBackgroundColorCha
         }}
         containerStyle={{
           width: 150,
-          marginHorizontal: 20,
+          marginHorizontal: 15,
           marginVertical: 20,
 
         }}

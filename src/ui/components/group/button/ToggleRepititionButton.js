@@ -4,6 +4,7 @@ import sleep from "../../../../api/Thread.js";
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+import { gray } from 'kleur';
 
 export default function ToggleRepititionButton({ target_color, start_color, icon, iconFont, onBackgroundColorChange }) {
 
@@ -73,21 +74,30 @@ export default function ToggleRepititionButton({ target_color, start_color, icon
         icon={{
           name: icon,
           type: iconFont,
-          size: 15,
+          size: 20,
           color: 'white',
         }}
-        iconContainerStyle={{ marginRight: 10 }}
-        titleStyle={{ fontWeight: '700' }}
+        iconContainerStyle={{ 
+            marginRight: 10 
+        }}
+        titleStyle={{ 
+            fontWeight: '700' 
+        }}
         buttonStyle={{
           backgroundColor: 'blue',
           borderColor: 'transparent',
           borderWidth: 0,
-          borderRadius: 30,
+          borderRadius: 10,
+          margin: 10,
+          padding: 25
         }}
         containerStyle={{
-          width: 200,
-          marginHorizontal: 50,
-          marginVertical: 10,
+            // backgroundColor: "gray",
+            width: 170,
+            height: 100,
+            justifyContent: 'center',
+            marginHorizontal: 10,
+            marginVertical: 20,
         }}
       />
     )

@@ -110,21 +110,30 @@ export default function CycleButton({ icon, iconFont, onBackgroundColorChange })
         icon={{
           name: icon,
           type: iconFont,
-          size: 15,
+          size: 20,
           color: 'white',
         }}
-        iconContainerStyle={{ marginRight: 10 }}
-        titleStyle={{ fontWeight: '700' }}
+        iconContainerStyle={{ 
+            marginRight: 10 
+        }}
+        titleStyle={{ 
+            fontWeight: '700',
+            justifyContent: 'center',
+        }}
         buttonStyle={{
-          backgroundColor: 'purple',
-          borderColor: 'transparent',
-          borderWidth: 0,
-          borderRadius: 30,
+            backgroundColor: 'purple',
+            borderColor: 'transparent',
+            borderWidth: 0,
+            borderRadius: 10,
+            margin: 10,
+            padding: 25
         }}
         containerStyle={{
-          width: 200,
-          marginHorizontal: 50,
-          marginVertical: 10,
+            width: 170,
+            height: 100,
+            justifyContent: 'center',
+            marginHorizontal: 10,
+            marginVertical: 20,
         }}
       />
     )

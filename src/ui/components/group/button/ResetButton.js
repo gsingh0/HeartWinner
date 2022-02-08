@@ -36,20 +36,27 @@ export default function ResetButton({ title, buttonColor, color, icon, iconFont,
         icon={{
           name: icon,
           type: iconFont,
-          size: 15,
+          size: 20,
           color: 'white',
         }}
-        iconContainerStyle={{ marginRight: 10 }}
-        titleStyle={{ fontWeight: '700' }}
+        iconContainerStyle={{ 
+            marginRight: 10 
+        }}
+        titleStyle={{ 
+            fontWeight: '700',
+            justifyContent: 'center',
+            width: 75,
+            fontSize: 15
+        }}
         buttonStyle={{
           backgroundColor: buttonColor,
           borderColor: 'transparent',
           borderWidth: 0,
-          borderRadius: 30,
+          borderRadius: 10,
         }}
         containerStyle={{
-          width: 120,
-          marginHorizontal: 20,
+          width: 150,
+          marginHorizontal: 15,
           marginVertical: 20,
         }}
       />
