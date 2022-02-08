@@ -8,6 +8,7 @@ some edge cases to consider
  - home screen just going to be a scroll view of buttons
     - with each button pressed, will change the color of background
 
+
 - put light on in the bottom of the screen
 - make button the same shade as the background color when pressed
     - try to add animations to background color
@@ -19,14 +20,21 @@ some edge cases to consider
 
 - type of buttons
     - misc.
-        - annoy gurnoor (toggle off and on repeatedly)
-        - dim the light (so gurnoor can't see)
-        - change the color to yellow (gurnoor hates that color)
-    - activity
+        - *scare gurnoor (toggle off and on repeatedly)
+        - *dim the light (so gurnoor can't see)
+        - *change the color to yellow (gurnoor hates that color)
+    - mood
         - pink - jeetu wants attention
-        - orange - jeetu is busy
-        - green - jeetu is happy
-        - red - jeetu is not happy
+        - green - jeetu wants to talk
+        - orange - jeetu wants to vent
+        - *multi-color - jeetu wants to annoy gurnoor
+
+
+color transition -> click button color should be target color
+    - prev: current, target: clicked color, can do transition css from there inside
+    onBackGroundColorChange method
+
+- explore effects
     
 
 
