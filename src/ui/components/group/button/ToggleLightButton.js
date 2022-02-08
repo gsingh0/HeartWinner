@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 
-export default function ToggleLightButton() {
+export default function ToggleLightButton({ icon, iconFont, onBackgroundColorChange }) {
     const [lightStateText, setLightStateText] = useState("LOADING...");
 
     const togglePower = async () => {
@@ -14,9 +14,11 @@ export default function ToggleLightButton() {
             let light = data[0];
             await sleep(3000);
             if (light.power === "on") {
-                setLightState("off");
+                await setLightState("off");
+                onBackgroundColorChange("white");
             } else {
-                setLightState("on");
+                await setLightState("on");
+                onBackgroundColorChange("yellow");
             }
         }
     }
@@ -58,7 +60,12 @@ export default function ToggleLightButton() {
             let lightState = await getLightState();
             console.log(lightState[0].power);
             setLightStateText("LIGHT: " + lightState[0].power.toUpperCase());
-        } catch (erorr) {
+            if (lightState[0].power === 'on') {
+                onBackgroundColorChange("yellow");
+            } else {
+                onBackgroundColorChange("white");
+            }
+        } catch (error) {
             Alert.alert("error: " + error);
         }
     }, []);
@@ -68,8 +75,8 @@ export default function ToggleLightButton() {
         onPress={() => togglePower()}
         title={lightStateText}
         icon={{
-          name: 'home',
-          type: 'font-awesome',
+          name: icon,
+          type: iconFont,
           size: 15,
           color: 'white',
         }}
