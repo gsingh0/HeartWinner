@@ -27,6 +27,7 @@ export default function App() {
           <Stack.Screen name='Login' component={Login} options={{ headerShown: false }}/>
           <Stack.Screen name='TabNavigators' component={TabNavigators} options={{ headerShown: false }}/>
         </Stack.Navigator>
+        <StatusBar style="light" />
       </NavigationContainer>
   );
 }

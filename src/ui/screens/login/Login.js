@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, View, Text, StyleSheet, Alert, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native-paper';
@@ -95,7 +96,7 @@ export default function Login({ navigation }) {
           }}
       />
 
-
+      <StatusBar style="dark" />
       </Background>
   );
 }
