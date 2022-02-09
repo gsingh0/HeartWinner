@@ -7,11 +7,14 @@ import Login from './src/ui/screens/login/Login';
 import Loading from './src/ui/screens/loading/Loading';
 import * as firebase from 'firebase/app';
 import apiKeys from './config/keys';
+import { LogBox } from 'react-native';
 
 const Stack = createStackNavigator();
 
 
 export default function App() {
+  LogBox.ignoreAllLogs();
+
   if (!firebase.getApps().length) {
     console.log('Connected with Firebase')
     firebase.initializeApp(apiKeys.firebaseConfig);
