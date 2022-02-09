@@ -26,7 +26,7 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
         });
     }
 
-    const setLightColor = async () => {
+    const setLightColor = async (targetcolor) => {
         return new Promise((resolve, reject) => {
             axios({
                 method: 'put',
@@ -35,7 +35,7 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
                     Authorization: "Bearer " + appConfig["api-key"]
                 },
                 data: {
-                    color: color,
+                    color: targetcolor,
                     brightness: 1.0
                 }
             }).then((response) => {
@@ -49,9 +49,9 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
     const reset = async () => {
         try {
             setLoading(true)
-            await setLightColor();
             await effectsOff();
-            onBackgroundColorChange(colorValue, 1000);
+            await setLightColor(color);
+            onBackgroundColorChange(colorValue, 3000);
             setLoading(false);
         } catch (error) {
             console.log(error);
@@ -81,7 +81,7 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
             fontSize: 15
         }}
         buttonStyle={{
-          backgroundColor: buttonColor,
+          backgroundColor: "rgb(220,20,60)",
           borderColor: 'transparent',
           borderWidth: 0,
           borderRadius: 10,

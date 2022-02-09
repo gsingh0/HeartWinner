@@ -9,10 +9,11 @@ import { colorValues, colorsRGB, colorsName } from '../../../enums/colors';
 export default function Home() {
     const [style, setStyle] = useState(styles.backdrop);
     const [animation, setAnimation] = useState(new Animated.Value(0));
+    const [displayButtons, setDisplayButtons] = useState(false);
 
     const colorInterpolation =  animation.interpolate({
         inputRange: [
-            colorValues.BLACK,
+            colorValues.WHITE,
             colorValues.BLUE,
             colorValues.RED,
             colorValues.PURPLE,
@@ -20,10 +21,10 @@ export default function Home() {
             colorValues.PINK,
             colorValues.ORANGE,
             colorValues.YELLOW,
-            colorValues.WHITE
+            colorValues.BLACK
             ],
         outputRange: [
-            colorsRGB.BLACK,
+            colorsRGB.WHITE,
             colorsRGB.BLUE,
             colorsRGB.RED,
             colorsRGB.PURPLE,
@@ -31,7 +32,7 @@ export default function Home() {
             colorsRGB.PINK,
             colorsRGB.ORANGE,
             colorsRGB.YELLOW,
-            colorsRGB.WHITE
+            colorsRGB.BLACK
         ]
       });
 
@@ -40,7 +41,6 @@ export default function Home() {
       }
 
       const handleAnimation = (value, duration) => {
-          console.log(duration);
         Animated.timing(animation, {
           toValue: value,
           duration: duration,
@@ -53,12 +53,18 @@ export default function Home() {
         handleAnimation(value, duration);
     }
 
-    return (
-        <View style={styles.home}>
-            <Animated.View style={{...style, ...animatedStyle}}>
-                <ScrollView>
-                    <ButtonGroup onBackgroundColorChange={(value, duration) => updateBackgroundColor(value, duration)} />
-                </ScrollView>
+    const initializeDisplayButtons = (isLightOn) => {
+        setDisplayButtons(isLightOn);
+    }
+
+    if (displayButtons) {
+        return (
+            <View style={styles.home}>
+                <Animated.View style={{...style, ...animatedStyle}}>
+                    <ScrollView>
+                        <ButtonGroup onBackgroundColorChange={(value, duration) => updateBackgroundColor(value, duration)} />
+                    </ScrollView>
+                </Animated.View>
                 <View style={styles.mainButtons}>
                     <ResetButton title="Reset Color" 
                         buttonColor={colorsName.BLACK} 
@@ -70,10 +76,27 @@ export default function Home() {
                     <ToggleLightButton 
                         icon="light-up" 
                         iconFont="entypo" 
-                        onBackgroundColorChange={(color, duration) => updateBackgroundColor(color, duration)}></ToggleLightButton>
+                        initializeDisplayButtons={(isLightOn) => initializeDisplayButtons(isLightOn)}></ToggleLightButton>
                 </View>
-            </Animated.View>
-        </View>
-    
-    )
+            </View>
+        )
+    } else {
+        return (
+            <View style={styles.home}>
+                <View style={styles.mainButtons}>
+                    <ResetButton title="Reset Color" 
+                        buttonColor={colorsName.BLACK} 
+                        color={colorsName.WHITE} 
+                        colorValue={colorValues.WHITE} 
+                        icon="loop" 
+                        iconFont="foundation" 
+                        onBackgroundColorChange={(color, duration) => updateBackgroundColor(color, duration)}></ResetButton>
+                    <ToggleLightButton 
+                        icon="light-up" 
+                        iconFont="entypo" 
+                        initializeDisplayButtons={(isLightOn) => initializeDisplayButtons(isLightOn)}></ToggleLightButton>
+                </View>
+            </View>
+        )
+    }
 }

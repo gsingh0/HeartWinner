@@ -8,7 +8,7 @@ export default StyleSheet.create({
   buttonView: {
     // bottom: 0,
     marginTop: 50,
-    marginBottom: 250,
+    marginBottom: 700,
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',

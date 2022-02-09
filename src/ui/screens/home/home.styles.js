@@ -4,10 +4,15 @@ export default StyleSheet.create({
     home: {
         position: 'relative',
         flex: 1,
+        backgroundColor: 'black'
       },
 
     backdrop: {
         backgroundColor: 'yellow',
+    },
+
+    scrollView: {
+        
     },
     
     mainButtons: {
@@ -19,7 +24,8 @@ export default StyleSheet.create({
         flexWrap:'wrap',
         display: 'flex',
         justifyContent: 'space-between',
-        // alignItems: 'flex-end',
-        backgroundColor: 'red'
+        backgroundColor: 'rgba(220,20,60, 0.5)',
+        
+        
     }
 });

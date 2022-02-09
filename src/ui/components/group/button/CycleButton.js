@@ -108,7 +108,7 @@ export default function CycleButton({ icon, iconFont, onBackgroundColorChange })
             justifyContent: 'center',
         }}
         buttonStyle={{
-            backgroundColor: 'purple',
+            backgroundColor: 'rgb(139,0,139)',
             borderColor: 'transparent',
             borderWidth: 0,
             borderRadius: 10,

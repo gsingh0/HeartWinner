@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { colorValues, colorsRGB, colorsName } from '../../../../enums/colors';
 
-export default function ToggleLightButton({ icon, iconFont, onBackgroundColorChange }) {
+export default function ToggleLightButton({ icon, iconFont, initializeDisplayButtons }) {
     const [lightStateText, setLightStateText] = useState("LOADING...");
     const [loading, setLoading] = useState(true);
 
@@ -19,11 +19,11 @@ export default function ToggleLightButton({ icon, iconFont, onBackgroundColorCha
             if (light.power === "on") {
                 await setLightState("off");
                 setLoading(false);
-                onBackgroundColorChange(colorValues.BLACK, 0);
+                initializeDisplayButtons(false);
             } else {
                 await setLightState("on");
                 setLoading(false);
-                onBackgroundColorChange(colorValues.WHITE, 0);
+                initializeDisplayButtons(true);
             }
         }
     }
@@ -71,17 +71,18 @@ export default function ToggleLightButton({ icon, iconFont, onBackgroundColorCha
     useEffect(async () => {
         try {
             setLoading(true);
+            await sleep(3000);
             let lightState = await getLightState();
             console.log(lightState[0].power);
             setLightStateText("LIGHT: " + lightState[0].power.toUpperCase());
             setLoading(false);
             if (lightState[0].power === 'on') {
-                onBackgroundColorChange(colorValues.WHITE, 0);
+                initializeDisplayButtons(true);
             } else {
-                onBackgroundColorChange(colorValues.BLACK, 0);
+                initializeDisplayButtons(false);
             }
         } catch (error) {
-            Alert.alert("error: " + error);
+            Alert.alert("Oops! Something went wrong.");
         }
     }, []);
 
@@ -107,7 +108,7 @@ export default function ToggleLightButton({ icon, iconFont, onBackgroundColorCha
             // flexWrap: 'wrap'
         }}
         buttonStyle={{
-          backgroundColor: 'rgba(90, 154, 230, 1)',
+          backgroundColor: 'rgb(220,20,60)',
           borderColor: 'transparent',
           borderWidth: 0,
           borderRadius: 10,

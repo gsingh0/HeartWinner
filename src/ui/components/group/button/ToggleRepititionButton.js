@@ -88,7 +88,7 @@ export default function ToggleRepititionButton({ toColor, toColorValue, fromColo
             fontWeight: '700' 
         }}
         buttonStyle={{
-          backgroundColor: 'blue',
+          backgroundColor: 'rgb(70,130,180)',
           borderColor: 'transparent',
           borderWidth: 0,
           borderRadius: 10,

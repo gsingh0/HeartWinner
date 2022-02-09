@@ -38,8 +38,15 @@ color transition -> click button color should be target color
 
 
 - missing you button
-    
 
+- missing you - pink - heart
+- company - orange - person-person
+- talk - blue
+- happy - green
+- low - red
+- hungry - yellow
+- annoy - purple 
+- confuse - black
 
 
 // Your web app's Firebase configuration
