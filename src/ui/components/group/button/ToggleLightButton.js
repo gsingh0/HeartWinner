@@ -39,7 +39,6 @@ export default function ToggleLightButton({ icon, iconFont, initializeDisplayBut
             }).then((response) => {
                 resolve(response.data);
             }).catch((error) => {
-                Alert.alert(error);
                 reject(error);
             });
         });
@@ -61,7 +60,6 @@ export default function ToggleLightButton({ icon, iconFont, initializeDisplayBut
                 setLightStateText("LIGHT: " + state.toUpperCase());
                 resolve(response);
              }).catch((error) => {
-                 Alert.alert(error);
                  console.log(error);
                  reject(error);
              });

@@ -21,7 +21,7 @@ export default function LogoutButton({ navigation }) {
                     Alert.alert("Error logging out: " + error);
                 });
         } catch (err) {
-            Alert.alert('There is something wrong!', err.message);
+            Alert.alert('Oops! There is something wrong!');
         }
     }
 

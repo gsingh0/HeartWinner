@@ -20,7 +20,6 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
             }).then((response) => {
                 resolve(response.data);
             }).catch((error) => {
-                Alert.alert(error);
                 reject(error);
             });
         });

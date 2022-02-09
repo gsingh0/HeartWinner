@@ -67,7 +67,7 @@ export default function MoodButton({ title, buttonColor, target, colorValue, ico
         }}
         containerStyle={{
             // backgroundColor: "gray",
-            width: 170,
+            width: 190,
             height: 100,
             justifyContent: 'center',
             marginHorizontal: 10,

@@ -24,7 +24,6 @@ export default function MorphButton({ icon, iconFont, onBackgroundColorChange })
                 console.log(response.data);
                 resolve(response.data);
             }).catch((error) => {
-                Alert.alert(error);
                 reject(error);
             });
         });
@@ -42,7 +41,6 @@ export default function MorphButton({ icon, iconFont, onBackgroundColorChange })
                 console.log(response);
                 resolve(response.data);
             }).catch((error) => {
-                Alert.alert(error);
                 reject(error);
             });
         });

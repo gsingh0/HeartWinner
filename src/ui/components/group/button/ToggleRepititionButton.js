@@ -26,7 +26,6 @@ export default function ToggleRepititionButton({ toColor, toColorValue, fromColo
             }).then((response) => {
                 resolve(response.data);
             }).catch((error) => {
-                Alert.alert(error);
                 reject(error);
             });
         });
@@ -53,22 +52,26 @@ export default function ToggleRepititionButton({ toColor, toColorValue, fromColo
     } 
 
     const runPulse = async () => {
-        let currColor = fromColor;
-        let count = 0;
-        await pulseEffect();
-        while (count < 15) {
-            if (currColor === fromColor) {
-                onBackgroundColorChange(toColorValue, 100) 
-                currColor = toColor;
-            } else {
-                onBackgroundColorChange(fromColorValue, 100) 
-                currColor = fromColor;
+        try {
+            let currColor = fromColor;
+            let count = 0;
+            await pulseEffect();
+            while (count < 15) {
+                if (currColor === fromColor) {
+                    onBackgroundColorChange(toColorValue, 100) 
+                    currColor = toColor;
+                } else {
+                    onBackgroundColorChange(fromColorValue, 100) 
+                    currColor = fromColor;
+                }
+                count++;
+                await sleep(1000);
             }
-            count++;
-            await sleep(1000);
+            await setLightColor(colorsName.WHITE);
+            onBackgroundColorChange(colorValues.WHITE, 1000); 
+        } catch (error) {
+            Alert.alert("Oops! Something went wrong.");
         }
-        await setLightColor(colorsName.WHITE);
-        onBackgroundColorChange(colorValues.WHITE, 1000); 
     }
 
     return (
@@ -97,7 +100,7 @@ export default function ToggleRepititionButton({ toColor, toColorValue, fromColo
         }}
         containerStyle={{
             // backgroundColor: "gray",
-            width: 170,
+            width: 190,
             height: 100,
             justifyContent: 'center',
             marginHorizontal: 10,

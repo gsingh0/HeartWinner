@@ -77,8 +77,7 @@ export default function CycleButton({ icon, iconFont, onBackgroundColorChange })
                 // not possible to sync light color with background color because
                 // api sends back hsl rep. when need rgb rep. So use randNum(0, 8)
                 let randValue = getRandomInt(9);
-                console.log(randValue);
-                onBackgroundColorChange(randValue, 100);
+                onBackgroundColorChange(randValue, 500);
                 count++;
                 sleep(1000);
             }
@@ -116,7 +115,7 @@ export default function CycleButton({ icon, iconFont, onBackgroundColorChange })
             padding: 25
         }}
         containerStyle={{
-            width: 170,
+            width: 190,
             height: 100,
             justifyContent: 'center',
             marginHorizontal: 10,
