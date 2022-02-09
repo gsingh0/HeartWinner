@@ -17,8 +17,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jbean.heartwinner",
+      "buildNumber": "1.0.0"
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/heart.png",
