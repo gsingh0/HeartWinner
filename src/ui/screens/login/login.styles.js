@@ -26,17 +26,19 @@ export default StyleSheet.create({
     },
     formInput: {
       width: 300,
-      fontSize:18,
-      borderWidth: 1,
-      borderColor:'#a4eddf',
-      padding: 10,
-      margin: 5,
+      fontSize:16,
+      height: 50,
+      // borderWidth: 1,
+      // borderColor:'#a4eddf',
+      // padding: 10,
+      margin: 7,
     },
     text: {
       textAlign: 'center',
-      fontSize: 20,
+      fontSize: 30,
       margin: 10,
       fontWeight: 'bold',
-      color: '#2E6194',
+      color: 'rgb(220,20,60)',
+      fontFamily: "Optima-BoldItalic"
     }
   });
