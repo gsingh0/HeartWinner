@@ -41,16 +41,23 @@ export default function Home() {
       }
 
       const handleAnimation = (value, duration) => {
-        Animated.timing(animation, {
-          toValue: value,
-          duration: duration,
-          easing: Easing.linear,
-          useNativeDriver: false
-        }).start()
+          return new Promise((resolve, reject) => {
+            Animated.timing(animation, {
+                toValue: value,
+                duration: duration,
+                easing: Easing.linear,
+                useNativeDriver: false
+              }).start(({ isFinished }) => {
+                resolve();
+              });
+          });
       }
 
     const updateBackgroundColor = (value, duration) => {
-        handleAnimation(value, duration);
+        return new Promise(async (resolve, reject) => {
+            await handleAnimation(value, duration);
+            resolve();
+        });
     }
 
     const initializeDisplayButtons = (isLightOn) => {

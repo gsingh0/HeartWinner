@@ -72,17 +72,17 @@ export default function CycleButton({ icon, iconFont, onBackgroundColorChange })
     const runCycle = async () => {
         try {
             let count = 0;
-            while (count < 15) {
+            while (count < 4) {
                 await cycle();
                 // not possible to sync light color with background color because
                 // api sends back hsl rep. when need rgb rep. So use randNum(0, 8)
                 let randValue = getRandomInt(9);
-                onBackgroundColorChange(randValue, 500);
+                await onBackgroundColorChange(randValue, 2000);
                 count++;
-                sleep(1000);
+                await sleep(1000);
             }
             await setLightState(colorsName.WHITE);
-            onBackgroundColorChange(colorValues.WHITE, 3000);
+            await onBackgroundColorChange(colorValues.WHITE, 3000);
         } catch (error) {
             Alert.alert("Oops! Something went wrong");
         }

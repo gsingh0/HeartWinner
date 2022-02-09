@@ -20,8 +20,8 @@ export default function MoodButton({ title, buttonColor, target, colorValue, ico
                     brightness: 1.0
                 }
             })
-            .then((response) => {
-                onBackgroundColorChange(colorValue, 3000);
+            .then(async (response) => {
+                await onBackgroundColorChange(colorValue, 3000);
                 resolve(response.data);
             }).catch((error) => {
                 console.log(error);

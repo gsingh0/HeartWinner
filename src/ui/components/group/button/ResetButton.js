@@ -50,7 +50,7 @@ export default function ResetButton({ title, buttonColor, color, colorValue, ico
             setLoading(true)
             await effectsOff();
             await setLightColor(color);
-            onBackgroundColorChange(colorValue, 3000);
+            await onBackgroundColorChange(colorValue, 3000);
             setLoading(false);
         } catch (error) {
             console.log(error);

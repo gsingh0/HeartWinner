@@ -58,17 +58,17 @@ export default function ToggleRepititionButton({ toColor, toColorValue, fromColo
             await pulseEffect();
             while (count < 15) {
                 if (currColor === fromColor) {
-                    onBackgroundColorChange(toColorValue, 100) 
+                    await onBackgroundColorChange(toColorValue, 100) 
                     currColor = toColor;
                 } else {
-                    onBackgroundColorChange(fromColorValue, 100) 
+                    await onBackgroundColorChange(fromColorValue, 100) 
                     currColor = fromColor;
                 }
                 count++;
                 await sleep(1000);
             }
             await setLightColor(colorsName.WHITE);
-            onBackgroundColorChange(colorValues.WHITE, 1000); 
+            await onBackgroundColorChange(colorValues.WHITE, 1000); 
         } catch (error) {
             Alert.alert("Oops! Something went wrong.");
         }
