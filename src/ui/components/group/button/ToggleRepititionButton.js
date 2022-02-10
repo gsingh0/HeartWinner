@@ -100,7 +100,7 @@ export default function ToggleRepititionButton({ toColor, toColorValue, fromColo
         }}
         containerStyle={{
             // backgroundColor: "gray",
-            width: 190,
+            width: 210,
             height: 100,
             justifyContent: 'center',
             marginHorizontal: 10,

@@ -115,7 +115,7 @@ export default function CycleButton({ icon, iconFont, onBackgroundColorChange })
             padding: 25
         }}
         containerStyle={{
-            width: 190,
+            width: 210,
             height: 100,
             justifyContent: 'center',
             marginHorizontal: 10,

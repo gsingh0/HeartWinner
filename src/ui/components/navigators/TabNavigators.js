@@ -36,7 +36,6 @@ export default function TabNavigators() {
                 swipeEnabled: true,
                 tabBarIndicatorStyle: {backgroundColor: "black",},
                 tabBarStyle: {backgroundColor: "rgb(220,20,60)"},
-                tabBarContentContainerStyle: {marginTop: 30}
             })}>
             <Tab.Screen name='Home' component={Home} options={{ headerShown: false }}/>
             <Tab.Screen name='Logout' component={Logout} options={{ headerShown: false }}/>

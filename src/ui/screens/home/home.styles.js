@@ -9,7 +9,7 @@ export default StyleSheet.create({
 
     backdrop: {
         backgroundColor: 'yellow',
-        height: 100
+        height: 100,
     },
 
     scrollView: {
@@ -18,7 +18,6 @@ export default StyleSheet.create({
     
     mainButtons: {
         position: 'absolute',
-        zIndex: 1,
         bottom: 0,
         width: '100%',
         flexDirection: 'row',
