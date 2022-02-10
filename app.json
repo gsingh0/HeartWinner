@@ -4,7 +4,7 @@
     "slug": "HeartWinner",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/heart.png",
+    "icon": "./assets/heart_icon.png",
     "splash": {
       "image": "./assets/heart.png",
       "resizeMode": "contain",
