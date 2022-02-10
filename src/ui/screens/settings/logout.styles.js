@@ -3,14 +3,15 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   contentView: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(220,20,60, 0.25)'
   },
   imgContainer: {
     flexDirection: 'row',
     height: 300,
-    width: 300
+    width: 300,
+    marginTop: '10%'
   },
 
   text: {
@@ -30,7 +31,7 @@ export default StyleSheet.create({
       aspectRatio: 1 // Your aspect ratio
   },
   buttonsContainer: {
-    top: '7%',
+    top: '3%',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',

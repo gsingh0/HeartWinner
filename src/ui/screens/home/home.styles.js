@@ -9,6 +9,7 @@ export default StyleSheet.create({
 
     backdrop: {
         backgroundColor: 'yellow',
+        height: 100
     },
 
     scrollView: {
