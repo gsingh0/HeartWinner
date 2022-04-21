@@ -75,7 +75,7 @@ export default function Home() {
                 <View style={styles.mainButtons}>
                     <ResetButton title="Reset Color" 
                         buttonColor={colorsName.BLACK} 
-                        color={colorsName.WHITE} 
+                        color={colorsName.BLUE} 
                         colorValue={colorValues.WHITE} 
                         icon="loop" 
                         iconFont="foundation" 
@@ -93,7 +93,7 @@ export default function Home() {
                 <View style={styles.mainButtons}>
                     <ResetButton title="Reset Color" 
                         buttonColor={colorsName.BLACK} 
-                        color={colorsName.BLUE} 
+                        color={colorsName.WHITE} 
                         colorValue={colorValues.WHITE} 
                         icon="loop" 
                         iconFont="foundation" 
