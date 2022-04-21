@@ -15,7 +15,7 @@ export default function ToggleLightButton({ icon, iconFont, initializeDisplayBut
         let data = await getLightState();
         if (data.length > 0) {
             let light = data[0];
-            await sleep(3000);
+            // await sleep(3000);
             if (light.power === "on") {
                 await setLightState("off");
                 setLoading(false);
@@ -69,7 +69,7 @@ export default function ToggleLightButton({ icon, iconFont, initializeDisplayBut
     useEffect(async () => {
         try {
             setLoading(true);
-            await sleep(3000);
+            // await sleep(3000);
             let lightState = await getLightState();
             console.log(lightState[0].power);
             setLightStateText("LIGHT: " + lightState[0].power.toUpperCase());
